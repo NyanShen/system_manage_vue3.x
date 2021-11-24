@@ -3,7 +3,7 @@ import api from '../service/api';
 
 export const fetchOrderList = query => {
     return request({
-        url: api.getExaminationOrderList,
+        url: api.tableList,
         method: 'GET',
         params: query
     });

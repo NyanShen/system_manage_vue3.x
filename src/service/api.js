@@ -1,3 +1,4 @@
 export default {
-    getExaminationOrderList: '/examination/api/tjyy/physicalExamination/getExaminationOrderList'
+    userLogin: '/userLogin',
+    tableList: '/tableList'
 }

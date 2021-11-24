@@ -72,7 +72,7 @@ export default {
         VueCropper,
     },
     setup() {
-        const name = localStorage.getItem("ms_username");
+        const name = localStorage.getItem("ms_token");
         const form = reactive({
             old: "",
             new: "",

@@ -31,7 +31,7 @@
         <div class="login-btn">
           <el-button type="primary" @click="submitForm()">登录</el-button>
         </div>
-        <p class="login-tips">Tips : 用户名和密码随便填。</p>
+        <p class="login-tips"></p>
       </el-form>
     </div>
   </div>
@@ -42,13 +42,14 @@ import { ref, reactive } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
+import { loginByPass } from "../api/index";
 
 export default {
   setup() {
     const router = useRouter();
     const param = reactive({
       username: "admin",
-      password: "123123",
+      password: "pass",
     });
 
     const rules = {
@@ -62,14 +63,23 @@ export default {
       password: [{ required: true, message: "请输入密码", trigger: "blur" }],
     };
     const login = ref(null);
+
     const submitForm = () => {
       login.value.validate((valid) => {
         if (valid) {
-          ElMessage.success("登录成功");
-          localStorage.setItem("ms_username", param.username);
-          router.push("/");
+          loginByPass({
+            username: param.username,
+            password: param.password,
+          })
+            .then((res) => {
+              ElMessage.success("登录成功");
+              localStorage.setItem("ms_token", res.data.token);
+              router.push("/");
+            })
+            .catch(() => {
+              ElMessage.error("登录失败");
+            });
         } else {
-          ElMessage.error("登录成功");
           return false;
         }
       });

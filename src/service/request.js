@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const service = axios.create({
     // process.env.NODE_ENV === 'development' 来判断是否开发环境
-    baseURL: 'https://mock.mengxuegu.com/mock/61712ffa8b1b83659a2ef9c7/xydyrmyy',
+    baseURL: 'https://mock.mengxuegu.com/mock/619e200ef720a73ceb75e9e7/system_manage',
     timeout: 5000
 });
 

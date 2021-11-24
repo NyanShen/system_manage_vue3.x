@@ -17,7 +17,15 @@ const routes = [
                     title: '系统首页'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
-            }, {
+            }, 
+            {
+                path: "/snapshot",
+                name: "snapshot",
+                meta: {
+                    title: '随手拍管理'
+                },
+                component: () => import ( /* webpackChunkName: "table" */ "../views/Snapshot.vue")
+            },{
                 path: "/table",
                 name: "basetable",
                 meta: {
@@ -127,8 +135,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title} | vue-manage-system`;
-    const role = localStorage.getItem('ms_username');
+    document.title = `${to.meta.title} | 后台管理系统`;
+    const role = localStorage.getItem('ms_token');
     if (!role && to.path !== '/login') {
         next('/login');
     } else if (to.meta.permission) {

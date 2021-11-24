@@ -47,7 +47,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
     setup() {
-        const username = localStorage.getItem("ms_username");
+        const username = localStorage.getItem("ms_token");
         const message = 2;
 
         const store = useStore();
@@ -67,7 +67,7 @@ export default {
         const router = useRouter();
         const handleCommand = (command) => {
             if (command == "loginout") {
-                localStorage.removeItem("ms_username");
+                localStorage.removeItem("ms_token");
                 router.push("/login");
             } else if (command == "user") {
                 router.push("/user");
