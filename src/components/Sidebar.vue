@@ -44,7 +44,7 @@ export default {
                 title: "系统首页",
             },
             {
-                icon: "el-icon-lx-setting",
+                icon: "el-icon-lx-settings",
                 index: "/snapshot",
                 title: "随手拍管理",
             },
